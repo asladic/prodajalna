@@ -151,6 +151,15 @@ var strankaIzRacuna = function(racunId, callback) {
     })
 }
 
+var strankaIzId = function(customerId, callback) {
+    pb.all("SELECT Customer.* FROM Customer \
+            WHERE Customer.CustomerId = " + customerId,
+    function(napaka, vrstice) {
+      console.log(vrstice);
+      callback(vrstice);
+    })
+}
+
 // Izpis računa v HTML predstavitvi na podlagi podatkov iz baze
 streznik.post('/izpisiRacunBaza', function(zahteva, odgovor) {
   odgovor.setHeader('content-type', 'text/xml');
@@ -184,11 +193,16 @@ streznik.get('/izpisiRacun/:oblika', function(zahteva, odgovor) {
       odgovor.send("<p>V košarici nimate nobene pesmi, \
         zato računa ni mogoče pripraviti!</p>");
     } else {
-      odgovor.setHeader('content-type', 'text/xml');
-      odgovor.render('eslog', {
+      var stranka;
+      strankaIzId(zahteva.session.selectedUser, function(vrstica){
+        stranka = vrstica;
+        odgovor.setHeader('content-type', 'text/xml');
+        odgovor.render('eslog', {
         vizualiziraj: zahteva.params.oblika == 'html' ? true : false,
+        strankaRacuna: stranka,
         postavkeRacuna: pesmi
-      })  
+        })
+      })
     }
   })
 })
