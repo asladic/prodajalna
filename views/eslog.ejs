@@ -173,22 +173,19 @@
 			<NazivNaslovPodjetja>
 				<VrstaPartnerja>BY</VrstaPartnerja>
 				<NazivPartnerja>
-					<NazivPartnerja1>Univerza v Ljubljani, </NazivPartnerja1>
-					<NazivPartnerja2>Fakulteta za računalništvo in informatiko</NazivPartnerja2>
-					<NazivPartnerja3>Laboratorij za </NazivPartnerja3>
-					<NazivPartnerja4>podatkovne tehnologije</NazivPartnerja4>
+					<NazivPartnerja1><%=strankaRacuna[0].FirstName + " " +
+					strankaRacuna[0].LastName%></NazivPartnerja1>
+					<NazivPartnerja2><%=strankaRacuna[0].Company%></NazivPartnerja2>
 				</NazivPartnerja>
 				<Ulica>
-					<Ulica1>Večna pot </Ulica1>
-					<Ulica2>113</Ulica2>
-					<Ulica3>nadstropje 2, kabinet R2.49</Ulica3>
+					<Ulica1><%=strankaRacuna[0].Address%></Ulica1>
 				</Ulica>
-				<Kraj>Ljubljana</Kraj>
-				<NazivDrzave>Slovenija</NazivDrzave>
-				<PostnaStevilka>1000</PostnaStevilka>
-				<KodaDrzave>SI</KodaDrzave>
+				<Kraj><%=strankaRacuna[0].City%></Kraj>
+				<NazivDrzave><%=strankaRacuna[0].Country%></NazivDrzave>
+				<PostnaStevilka><%=strankaRacuna[0].PostalCode%></PostnaStevilka>
+				<!--<KodaDrzave>SI</KodaDrzave>-->
 			</NazivNaslovPodjetja>
-			<FinancniPodatkiPodjetja>
+			<!--<FinancniPodatkiPodjetja>
 				<BancniRacun>
 					<StevilkaBancnegaRacuna>SI56020120090111333</StevilkaBancnegaRacuna>
 					<NazivBanke1>Moja banka d.d.</NazivBanke1>
@@ -207,17 +204,19 @@
 			<ReferencniPodatkiPodjetja>
 				<VrstaPodatkaPodjetja>IT</VrstaPodatkaPodjetja>
 				<PodatekPodjetja>444-55</PodatekPodjetja>
-			</ReferencniPodatkiPodjetja>
+			</ReferencniPodatkiPodjetja>-->
 			<KontaktiPodjetja>
 				<KontaktnaOseba>
-					<ImeOsebe>Dejan Lavbič</ImeOsebe>
+					<ImeOsebe><%=strankaRacuna[0].FirstName + " " +
+					strankaRacuna[0].LastName + " (" + strankaRacuna[0].Email
+					+ ")"%></ImeOsebe>
 				</KontaktnaOseba>
 				<Komunikacije>
-					<StevilkaKomunikacije>38614798000</StevilkaKomunikacije>
+					<StevilkaKomunikacije><%=strankaRacuna[0].Phone%></StevilkaKomunikacije>
 					<VrstaKomunikacije>TE</VrstaKomunikacije>
 				</Komunikacije>
 				<Komunikacije>
-					<StevilkaKomunikacije>38612419350</StevilkaKomunikacije>
+					<StevilkaKomunikacije><%=strankaRacuna[0].Fax%></StevilkaKomunikacije>
 					<VrstaKomunikacije>FX</VrstaKomunikacije>
 				</Komunikacije>
 			</KontaktiPodjetja>
